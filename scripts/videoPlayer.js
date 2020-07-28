@@ -21,17 +21,17 @@ const toggleIcon = () => {
 };
 
 const togglePlay = () => {
-        if (videoPlayer.paused) {
-            videoPlayer.play();
-        } else {
-            videoPlayer.pause();
-        }
+    if (videoPlayer.paused) {
+        videoPlayer.play();
+    } else {
+        videoPlayer.pause();
+    }
 
-        toggleIcon();
+    toggleIcon();
 };
 
 
-videoPlayer.addEventListener('click',  togglePlay);
+videoPlayer.addEventListener('click', togglePlay);
 videoButtonPlay.addEventListener('click', togglePlay);
 
 
@@ -72,4 +72,16 @@ videoProgress.addEventListener('change', () => {
     const value = videoProgress.value;
 
     videoPlayer.currentTime = (value * duration) / 100;
+});
+
+// доп.функция - перемотка по двойному щелчку
+const rewindLeft = document.querySelector('.rewind-left');
+const rewindRight = document.querySelector('.rewind-right');
+
+rewindLeft.addEventListener('dblclick', () => {
+    videoPlayer.currentTime -= 5;
+});
+
+rewindRight.addEventListener('dblclick', () => {
+        videoPlayer.currentTime += 5;
 });
