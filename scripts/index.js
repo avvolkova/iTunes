@@ -24,5 +24,3 @@ playerBtn.forEach((btn, i) => {
 radioPlayerInit();
 musicPlayerInit();
 videoPlayerInit();
-
-console.log(import.meta);

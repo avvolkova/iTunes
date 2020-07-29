@@ -3,7 +3,6 @@ export const videoPlayerInit = () => {
 };
 
 const videoPlayer = document.querySelector('.video-player');
-console.log(videoPlayer);
 const videoButtonPlay = document.querySelector('.video-button__play');
 const videoButtonStop = document.querySelector('.video-button__stop');
 const videoTimePassed = document.querySelector('.video-time__passed');
@@ -33,6 +32,11 @@ const togglePlay = () => {
 
 videoPlayer.addEventListener('click', togglePlay);
 videoButtonPlay.addEventListener('click', togglePlay);
+document.addEventListener('keydown', (evt) => {
+    if (evt.code === 'Space') {
+        togglePlay();
+    }
+});
 
 
 // альтернативный способ запуска toggleIcon для любого типа плееров
