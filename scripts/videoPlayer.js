@@ -84,3 +84,10 @@ const videoFullScreen = document.querySelector('.video-fullscreen');
 videoFullScreen.addEventListener('click', () => {
     videoPlayer.requestFullscreen();
 });
+
+// управление звуком
+const videoVolume = document.querySelector('.video-volume');
+
+videoVolume.addEventListener('input', () => {
+    videoPlayer.volume = videoVolume.value / 100;
+});

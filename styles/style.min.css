@@ -1468,6 +1468,10 @@ input[type=range]:focus::-ms-fill-upper {
     margin: 15px;
 }
 
+.video-volume__icon {
+    margin: 5px;
+}
+
 .video {
     display: none;
 }
@@ -1501,4 +1505,5 @@ input[type=range]:focus::-ms-fill-upper {
 .red-text {
     color: #F51E38;
 }
+
 
