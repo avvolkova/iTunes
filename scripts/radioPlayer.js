@@ -5,6 +5,7 @@ export const radioPlayerInit = () => {
     const radioHeader = document.querySelector('.radio-header__big');
     const radioItem = document.querySelectorAll('.radio-item');
     const radioStop = document.querySelector('.radio-stop');
+    const playerRadio = document.querySelector('.player-radio');
 
     const audio = new Audio(); // объект со свойствами как у видеоплеера
     audio.type = 'audio/aac';
@@ -48,14 +49,26 @@ export const radioPlayerInit = () => {
         radioCoverImg.src = parent.querySelector('.radio-img').src;
     });
 
+    const switchRadio = () => {
+        if (audio.paused) {
+            audio.play();
+            radioHeader.textContent = currentName;
+        } else {
+            audio.pause();
+            radioHeader.textContent = 'Пауза'
+        }
+    };
+
     radioStop.addEventListener('click', () => {
-       if (audio.paused) {
-           audio.play();
-           radioHeader.textContent = currentName;
-       } else {
-           audio.pause();
-           radioHeader.textContent = 'Пауза'
-       }
+        switchRadio();
         toggleIcon();
     });
+
+    document.addEventListener('keydown', (evt) => {
+        if (evt.code === 'Space' && playerRadio.classList.contains('active')) {
+            switchRadio();
+            toggleIcon();
+        }
+    });
 };
+

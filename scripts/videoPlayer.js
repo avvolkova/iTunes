@@ -5,6 +5,8 @@ export const videoPlayerInit = () => {
     const videoTimePassed = document.querySelector('.video-time__passed');
     const videoProgress = document.querySelector('.video-progress');
     const videoTimeTotal = document.querySelector('.video-time__total');
+    const video = document.querySelector('.video');
+    console.log(video);
 
     const toggleIcon = () => {
         if (videoPlayer.paused) {
@@ -30,7 +32,7 @@ export const videoPlayerInit = () => {
     videoPlayer.addEventListener('click', togglePlay);
     videoButtonPlay.addEventListener('click', togglePlay);
     document.addEventListener('keydown', (evt) => {
-        if (evt.code === 'Space') {
+        if (evt.code === 'Space' && video.classList.contains('active')) {
             togglePlay();
         }
     });
