@@ -21,17 +21,17 @@ const toggleIcon = () => {
 };
 
 const togglePlay = () => {
-        if (videoPlayer.paused) {
-            videoPlayer.play();
-        } else {
-            videoPlayer.pause();
-        }
+    if (videoPlayer.paused) {
+        videoPlayer.play();
+    } else {
+        videoPlayer.pause();
+    }
 
-        toggleIcon();
+    toggleIcon();
 };
 
 
-videoPlayer.addEventListener('click',  togglePlay);
+videoPlayer.addEventListener('click', togglePlay);
 videoButtonPlay.addEventListener('click', togglePlay);
 
 
@@ -72,4 +72,11 @@ videoProgress.addEventListener('change', () => {
     const value = videoProgress.value;
 
     videoPlayer.currentTime = (value * duration) / 100;
+});
+
+//fullscreen
+const videoFullScreen = document.querySelector('.video-fullscreen');
+
+videoFullScreen.addEventListener('click', () => {
+    videoPlayer.requestFullscreen();
 });
