@@ -80,3 +80,15 @@ const videoFullScreen = document.querySelector('.video-fullscreen');
 videoFullScreen.addEventListener('click', () => {
     videoPlayer.requestFullscreen();
 });
+
+// доп.функция - перемотка по двойному щелчку
+const rewindLeft = document.querySelector('.rewind-left');
+const rewindRight = document.querySelector('.rewind-right');
+
+rewindLeft.addEventListener('dblclick', () => {
+    videoPlayer.currentTime -= 5;
+});
+
+rewindRight.addEventListener('dblclick', () => {
+    videoPlayer.currentTime += 5;
+});
