@@ -136,6 +136,7 @@ main {
     border-left: 2px solid #F51E38;
 }
 
+<<<<<<< HEAD
 @-webkit-keyframes rotate {
     from {
         -webkit-transform: rotate(0deg);
@@ -884,6 +885,22 @@ main {
     border-top: 2px solid #F51E38;
     border-bottom: 2px solid transparent;
     border-left: 2px solid #F51E38;
+=======
+.rewind-left {
+    position: absolute;
+    z-index: 100;
+
+    width: 50%;
+    height: 100%;
+}
+
+.rewind-right {
+    position: absolute;
+    left: 50%;
+    z-index: 100;
+    width: 50%;
+    height: 100%;
+>>>>>>> feature-rewind
 }
 
 @-webkit-keyframes rotate {
@@ -1463,6 +1480,7 @@ input[type=range]:focus::-ms-fill-upper {
     margin: 15px;
     font-weight: 700;
 }
+
 
 .video-fullscreen {
     margin: 15px;
