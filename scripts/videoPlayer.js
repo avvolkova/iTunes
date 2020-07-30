@@ -1,3 +1,5 @@
+import {addZero} from "./supportScript.js";
+
 export const videoPlayerInit = () => {
     const videoPlayer = document.querySelector('.video-player');
     const videoButtonPlay = document.querySelector('.video-button__play');
@@ -43,7 +45,7 @@ export const videoPlayerInit = () => {
 // videoPlayer.addEventListener('play', toggleIcon);
 // videoPlayer.addEventListener('pause', toggleIcon);
 
-    const stopPLay = () => {
+   export const stopPLay = () => {
         videoPlayer.pause();
         videoPlayer.currentTime = 0;
         toggleIcon();
@@ -51,20 +53,17 @@ export const videoPlayerInit = () => {
 
     videoButtonStop.addEventListener('click', stopPLay);
 
-// n - это переменная, обозначающая число
-    const addZero = n => n < 10 ? '0' + n : n;
-
     videoPlayer.addEventListener('timeupdate', () => {
         const currentTime = videoPlayer.currentTime;
         const duration = videoPlayer.duration;
 
         videoProgress.value = (currentTime / duration) * 100;
 
-        let minutesPassed = Math.floor(currentTime / 60);
-        let secondsPassed = Math.floor(currentTime % 60);
+        let minutesPassed = Math.floor(currentTime / 60) || '0';
+        let secondsPassed = Math.floor(currentTime % 60) || '0';
 
-        let minutesTotal = Math.floor(duration / 60);
-        let secondsTotal = Math.floor(duration % 60);
+        let minutesTotal = Math.floor(duration / 60) || '0';
+        let secondsTotal = Math.floor(duration % 60) || '0';
 
         videoTimePassed.textContent = addZero(minutesPassed) + ':' + addZero(secondsPassed);
         videoTimeTotal.textContent = addZero(minutesTotal) + ':' + addZero(secondsTotal);
@@ -91,4 +90,3 @@ export const videoPlayerInit = () => {
         videoPlayer.volume = videoVolume.value / 100;
     });
 };
-

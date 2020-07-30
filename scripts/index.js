@@ -11,6 +11,8 @@ function deactivationPlayer() {
     temp.style.display = 'none'; // Надпись "Медиапортал ЯTunes"
     playerBtn.forEach(item => item.classList.remove('active'));
     playerBlock.forEach(item => item.classList.remove('active'));
+
+
 }
 
 playerBtn.forEach((btn, i) => {
@@ -18,6 +20,8 @@ playerBtn.forEach((btn, i) => {
         deactivationPlayer();
         btn.classList.add('active');
         playerBlock[i].classList.add('active');
+
+
     })
 });
 
