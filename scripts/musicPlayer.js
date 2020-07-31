@@ -1,5 +1,3 @@
-import {addZero} from "./supportScript.js";
-
 export const musicPlayerInit = () => {
 
     const audio = document.querySelector('.audio');
@@ -23,6 +21,10 @@ export const musicPlayerInit = () => {
         } else {
             audioPlayer.pause();
         }
+    };
+
+    const stopMusic = () => {
+        if (!audioPlayer.paused) {  audioPlayer.pause() }
     };
 
     const toggleIcon = () => {
@@ -121,3 +123,5 @@ export const musicPlayerInit = () => {
     // });
 
 };
+
+import {addZero} from "./supportScript.js";

@@ -1,5 +1,3 @@
-import {addZero} from "./supportScript.js";
-
 export const videoPlayerInit = () => {
     const videoPlayer = document.querySelector('.video-player');
     const videoButtonPlay = document.querySelector('.video-button__play');
@@ -45,7 +43,7 @@ export const videoPlayerInit = () => {
 // videoPlayer.addEventListener('play', toggleIcon);
 // videoPlayer.addEventListener('pause', toggleIcon);
 
-   export const stopPLay = () => {
+   const stopPLay = () => {
         videoPlayer.pause();
         videoPlayer.currentTime = 0;
         toggleIcon();
@@ -103,3 +101,5 @@ rewindRight.addEventListener('dblclick', () => {
         videoPlayer.volume = videoVolume.value / 100;
     });
 };
+
+import {addZero} from "./supportScript.js";
