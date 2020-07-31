@@ -29,6 +29,23 @@ export const musicPlayerInit = () => {
         audioButton_Play.classList.toggle('fa-pause');
     };
 
+    const updateTime = () => {
+        const duration = audioPlayer.duration;
+        const currentTime = audioPlayer.currentTime;
+        const progress = (currentTime / duration) * 100;
+
+        audioProgressTiming.style.width = progress + '%';
+
+        let minutesPassed = Math.floor(currentTime / 60) || '0';
+        let secondsPassed = Math.floor(currentTime % 60) || '0';
+
+        let minutesTotal = Math.floor(duration / 60) || '0';
+        let secondsTotal = Math.floor(duration % 60) || '0';
+
+        audioTimePassed.textContent = addZero(minutesPassed) + ':' + addZero(secondsPassed);
+        audioTimeTotal.textContent = addZero(minutesTotal) + ":" + addZero(secondsTotal);
+    };
+
     const loadTrack = () => {
         const isPaused = audioPlayer.paused;
         const track = playlist[trackIndex];
@@ -88,20 +105,7 @@ export const musicPlayerInit = () => {
     });
 
     audioPlayer.addEventListener('timeupdate', () => {
-        const duration = audioPlayer.duration;
-        const currentTime = audioPlayer.currentTime;
-        const progress = (currentTime / duration) * 100;
-
-        audioProgressTiming.style.width = progress + '%';
-
-        let minutesPassed = Math.floor(currentTime / 60) || '0';
-        let secondsPassed = Math.floor(currentTime % 60) || '0';
-
-        let minutesTotal = Math.floor(duration / 60) || '0';
-        let secondsTotal = Math.floor(duration % 60) || '0';
-
-        audioTimePassed.textContent = addZero(minutesPassed) + ':' + addZero(secondsPassed);
-        audioTimeTotal.textContent = addZero(minutesTotal) + ":" + addZero(secondsTotal);
+      updateTime();
     });
 
     audioProgress.addEventListener('click', evt => {
@@ -111,12 +115,14 @@ export const musicPlayerInit = () => {
         audioPlayer.currentTime = progress;
     });
 
-    // document.addEventListener('keydown', (evt) => {
-    //     if (evt.code === 'Space' && audio.classList.contains('active')) {
-    //        switchMusic();
-    //        toggleIcon();
-    //     }
-    // });
+    document.addEventListener('keydown', (evt) => {
+        // prevent space btn to press unneeded btns
+        if (document.activeElement !== document.body) document.activeElement.blur();
+        if (evt.code === 'Space' && audio.classList.contains('active')) {
+           switchMusic();
+           toggleIcon();
+        }
+    });
 
     // создаём метод для экспортируемого объекта и потом вызовем его при переключении вкладок,
     // чтобы выключать соответствующий плеер.
