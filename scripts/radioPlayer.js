@@ -70,5 +70,10 @@ export const radioPlayerInit = () => {
             toggleIcon();
         }
     });
+
+    radioPlayerInit.stop = () => {
+        audio.pause();
+        toggleIcon();
+    }
 };
 

@@ -23,10 +23,6 @@ export const musicPlayerInit = () => {
         }
     };
 
-    const stopMusic = () => {
-        if (!audioPlayer.paused) {  audioPlayer.pause() }
-    };
-
     const toggleIcon = () => {
         audio.classList.toggle('play');
         audioButton_Play.classList.toggle('fa-play');
@@ -101,7 +97,7 @@ export const musicPlayerInit = () => {
         let minutesPassed = Math.floor(currentTime / 60) || '0';
         let secondsPassed = Math.floor(currentTime % 60) || '0';
 
-        let minutesTotal = Math.floor(duration/ 60) || '0';
+        let minutesTotal = Math.floor(duration / 60) || '0';
         let secondsTotal = Math.floor(duration % 60) || '0';
 
         audioTimePassed.textContent = addZero(minutesPassed) + ':' + addZero(secondsPassed);
@@ -113,7 +109,7 @@ export const musicPlayerInit = () => {
         const trackLength = audioProgress.clientWidth;
         const progress = (x / trackLength) * audioPlayer.duration;
         audioPlayer.currentTime = progress;
-    })
+    });
 
     // document.addEventListener('keydown', (evt) => {
     //     if (evt.code === 'Space' && audio.classList.contains('active')) {
@@ -121,6 +117,16 @@ export const musicPlayerInit = () => {
     //        toggleIcon();
     //     }
     // });
+
+    // создаём метод для экспортируемого объекта и потом вызовем его при переключении вкладок,
+    // чтобы выключать соответствующий плеер.
+
+    musicPlayerInit.stop = () => {
+        if (!audioPlayer.paused) {
+            audioPlayer.pause();
+            toggleIcon();
+        }
+    }
 
 };
 
